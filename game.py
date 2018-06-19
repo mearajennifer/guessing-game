@@ -2,7 +2,7 @@
 import random
 # Put your code here
 keep_playing = True
-best_score = 9223372036854775807
+best_score = 10
 
 # greet player and ask for name
 print("what up playa")
@@ -35,6 +35,9 @@ def guess_game():
                 print("that's too high", name)
             else:
                 print(congrats.format(name, counter))
+        if counter > 10:
+            print("this is taking too long, you lose")
+            break
     return counter
 
 
