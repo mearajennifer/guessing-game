@@ -19,7 +19,7 @@ while num != random_num:
     num = input("> ")
     num = int(num)
     counter += 1
-    if num > 100:
+    if num > 100 or num < 1:
         print("hi, are you sure you're smart enough for this?")
     elif num < random_num:
         print("your guess is too looooow")
