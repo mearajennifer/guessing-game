@@ -17,13 +17,17 @@ congrats = "well done {}! congrats on guessing a small number in {} tries"
 while num != random_num:
     print("guess a number between 1 and 100")
     num = input("> ")
-    num = int(num)
     counter += 1
-    if num > 100 or num < 1:
-        print("hi, are you sure you're smart enough for this?")
-    elif num < random_num:
-        print("your guess is too looooow")
-    elif num > random_num:
-        print("that's too high", name)
+    try:
+        num = int(num)
+    except ValueError:
+        print("yer dumb")
     else:
-        print(congrats.format(name, counter))
+        if num > 100 or num < 1:
+            print("hi, are you sure you're smart enough for this?")
+        elif num < random_num:
+            print("your guess is too looooow")
+        elif num > random_num:
+            print("that's too high", name)
+        else:
+            print(congrats.format(name, counter))
