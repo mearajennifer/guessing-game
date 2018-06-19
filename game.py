@@ -1,7 +1,6 @@
 """A number-guessing game."""
 import random
 # Put your code here
-keep_playing = True
 best_score = 10
 
 # greet player and ask for name
@@ -13,12 +12,11 @@ name = input("> ")
 def guess_game():
     # initiate counter, num, and get random number
     counter = 0
-    num = 0
     random_num = random.randint(1, 100)
     congrats = "well done {}! congrats on guessing a small number in {} tries"
 
     # ask user for number and repeat forever until they guess the correct one
-    while num != random_num:
+    while True:
         print("guess a number between 1 and 100")
         num = input("> ")
         counter += 1
@@ -27,21 +25,23 @@ def guess_game():
         except ValueError:
             print("yer dumb")
         else:
-            if num > 100 or num < 1:
+            if num == random_num:
+                print(congrats.format(name, counter))
+                break
+            elif num > 100 or num < 1:
                 print("hi, are you sure you're smart enough for this?")
             elif num < random_num:
                 print("your guess is too looooow")
             elif num > random_num:
                 print("that's too high", name)
-            else:
-                print(congrats.format(name, counter))
+
         if counter > 10:
             print("this is taking too long, you lose")
             break
     return counter
 
 
-while keep_playing:
+while True:
     new_score = guess_game()
     if new_score < best_score:
         print("That's a new low score!")
@@ -49,4 +49,4 @@ while keep_playing:
     print("do you want to play again? Y or N")
     answer = input("> ")
     if answer == "N":
-        keep_playing = False
+        break
