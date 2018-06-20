@@ -74,6 +74,7 @@ while True:
         A) Want to guess the computer's number? or
         B) Want the computer to guess your number?""")
     game_type = input("> ")
+    game_type = game_type.upper()
     if game_type == "A":
         new_score = guess_game()
     elif game_type == "B":
@@ -85,5 +86,7 @@ while True:
     print("The best score is {}.".format(best_score))
     print("do you want to play again? Y or N")
     answer = input("> ")
+    answer = answer.upper()
     if answer == "N":
         break
+    print(answer)
