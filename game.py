@@ -45,8 +45,40 @@ def guess_game():
     return points
 
 
+def comp_guess_game():
+    low, high = input("Enter a low: "), input("Enter a high: ")
+    low, high = int(low), int(high)
+    counter = 0
+
+    # computer guesses while user responds until the guess is correct
+    while True:
+        comp_guess = math.floor((low + high) / 2)
+        print("The computer guesses {}".format(comp_guess))
+        counter += 1
+        print("Too high? Too low? You won?")
+        answer = input("> ")
+        if answer == "you won":
+            print("The computer is so smart!")
+            break
+        elif answer == "too high":
+            high = comp_guess
+        elif answer == "too low":
+            low = comp_guess
+
+    points = math.floor((counter * 100) / len(range(low, high)))
+    return points
+
+
 while True:
-    new_score = guess_game()
+    print("""Do you
+        A) Want to guess the computer's number? or
+        B) Want the computer to guess your number?""")
+    game_type = input("> ")
+    if game_type == "A":
+        new_score = guess_game()
+    elif game_type == "B":
+        new_score = comp_guess_game()
+
     if new_score < best_score:
         print("That's a new low score!")
         best_score = new_score
